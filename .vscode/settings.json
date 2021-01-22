@@ -1,3 +1,4 @@
 {
-    "jupyter.jupyterServerType": "remote"
+    "jupyter.jupyterServerType": "remote",
+    "python.pythonPath": "/Users/Mohit/anaconda3/envs/del_env/bin/python"
 }

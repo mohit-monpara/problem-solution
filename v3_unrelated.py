@@ -74,6 +74,7 @@ final_list_converted_pairs = convert_pairs(final_list)
 sent_1_list = []
 sent_2_list = []
 for i in range(len(final_list_converted_pairs)):
+    print("Out of {}, {} Completed".format(len(final_list_converted_pairs), i))
     for j in range(len(final_list_converted_pairs[i])):
         first_val = final_list_converted_pairs[i][j][0]
         sent_1_list.append(first_val)
@@ -96,4 +97,10 @@ final_df['sent-2'] = sent_2_list
 final_df['sent-1'] = final_df['sent-1'].astype('str')
 final_df['sent-2'] = final_df['sent-2'].astype('str')
 
-display(final_df.shape,final_df.head())
+print(final_df.shape)
+print(final_df.head())
+
+final_df['label'] = 0
+
+final_df.to_csv("/mnt/problem_sol_exp/data/unrelated_cnn.csv")
+final_df.to_json('/mnt/problem_sol_exp/data/unrelated_cnn.json', orient='records', lines=True)

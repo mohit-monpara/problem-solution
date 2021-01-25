@@ -34,9 +34,10 @@ def cell_expand(df, lst_cols, fill_value=''):
           
           
 # filenames = glob.glob('/Users/Mohit/Desktop/Work/Shreays Dataset/chuncker_raw_new_dataset/cnn/del/*.story', recursive = True)
-filenames = glob.glob('/Users/Mohit/Desktop/Work/Shreays Dataset/chuncker_raw_new_dataset/cnn/stories/*.story', recursive = True)
+filenames = glob.glob('/mnt/problem_sol_exp/raw_ds/cnn/stories/*.story', recursive = True)
+
 ## filenames = filenames[0]
-## print(filenames)
+print(filenames)
 
 
 files = {} 
@@ -155,20 +156,26 @@ def pairs_related(new_sents):
 
 final_df = pd.DataFrame(columns = ["sent-1", "sent-2"])
 for i in range(len(final_list_converted_pairs)):
-        for j in range(len(final_list_converted_pairs[i])):
-            try:
-                inter_df = pd.DataFrame(pairs_related(final_list_converted_pairs[i][j]))
-                inter_df.columns = ["sent-1", "sent-2"]
-                final_df = final_df.append(inter_df)
-            except:
-                # print(pairs_related(final_list_converted_pairs[i][j]))
-                continue
+    print("Out of {}, {} Completed".format(len(final_list_converted_pairs), i))
+    for j in range(len(final_list_converted_pairs[i])):
+        try:
+            inter_df = pd.DataFrame(pairs_related(final_list_converted_pairs[i][j]))
+            inter_df.columns = ["sent-1", "sent-2"]
+            final_df = final_df.append(inter_df)
+        except:
+            # print(pairs_related(final_list_converted_pairs[i][j]))
+            continue
 final_df = final_df.reset_index(drop=True)
 
 
 final_df['label'] = 1
 
+<<<<<<< HEAD
 final_df.to_csv("/Users/Mohit/Desktop/Work/Shreays Dataset/chuncker_raw_new_dataset/problem-solution/data/related.csv")
 
 # conda env export > environment.yml
 # conda env create -f environment.yml
+=======
+final_df.to_csv("/mnt/problem_sol_exp/data/related_cnn.csv")
+final_df.to_json('/mnt/problem_sol_exp/data/related_cnn.json', orient='records', lines=True)
+>>>>>>> 4ff84fd69fc8683ca28d5acc93bd3589f0f76e68

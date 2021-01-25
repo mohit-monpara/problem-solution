@@ -169,3 +169,6 @@ final_df = final_df.reset_index(drop=True)
 final_df['label'] = 1
 
 final_df.to_csv("/Users/Mohit/Desktop/Work/Shreays Dataset/chuncker_raw_new_dataset/problem-solution/data/related.csv")
+
+# conda env export > environment.yml
+# conda env create -f environment.yml
